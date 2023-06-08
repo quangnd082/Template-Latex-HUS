@@ -1,0 +1,239 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Khóa luận tốt nghiệp/Tiểu luận 
+% LaTeX Template
+% Phiên bản 1.0 (tạo ra ngày 05/10/2022)
+%
+% Template này có thể được download tại:
+% https://github.com/cpc1996/HUS-Dissertation-Template
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%----------------------------------------------------------------------------------------
+%	(KHÔNG CHỈNH SỬA PHẦN NÀY)
+%
+%	PHẦN 1: CÁC PACKAGE CƠ BẢN VÀ CÁC TÙY CHỈNH VĂN BẢN
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+12pt,
+oneside,
+english,
+doublespacing,
+nolistspacing,
+liststotoc,
+parskip,
+headsepline,
+chapterinoneline,
+]{HUSdissertation}
+
+% \usepackage[utf8]{inputenc} 
+\usepackage[utf8]{vietnam} 
+%\usepackage[T1]{fontenc}
+
+\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage{graphicx} 
+\usepackage{array}
+\allowdisplaybreaks
+
+%https://www.overleaf.com/learn/latex/Biblatex_citation_styles
+%\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex}
+\usepackage[backend=bibtex,style=numeric,citestyle=ieee,natbib=true]{biblatex}
+
+\addbibresource{main.bib}
+
+\usepackage[autostyle=true]{csquotes}
+
+
+%----------------------------------------------------------------------------------------
+%	PHẦN 2: CÁC PACKAGE BỔ TRỢ THÊM VÀO TRONG QUÁ TRÌNH BIÊN SOẠN
+%----------------------------------------------------------------------------------------
+
+\RequirePackage{setlst}		% Liệt kê/trích dẫn code
+
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage[fontsize=13pt]{scrextend}
+
+%https://www.sascha-frank.com/latex-font-size.html
+%https://tex.stackexchange.com/questions/103286/how-to-change-section-subsection-font-size
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\fontsize{13}{13}\bfseries}{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\normalfont\fontsize{13}{13}\bfseries\itshape}{\thesubsection}{1em}{}
+
+%https://tex.stackexchange.com/questions/351961/how-to-indent-code-in-beginverbatim
+\usepackage{fancyvrb} 		% Fancy Verbatim
+\fvset{tabsize=4,vspace=0pt,fontsize=\footnotesize}
+
+\usepackage{longtable} 		% Bảng dài - Long table
+
+\usepackage[figuresright]{rotating} % Bảng ngang - Sideways table
+\usepackage{tabularx}
+
+\usepackage{fontawesome5} 	% Các biểu tượng, ký hiệu đặc biệt
+
+\usepackage{tikz} 			% Vẽ hình
+\usetikzlibrary{calc}
+
+\usepackage{indentfirst}	% Lùi đầu dòng ở đầu đoạn văn
+\setlength{\parindent}{0.5cm}
+
+%----------------------------------------------------------------------------------------
+%	PHẦN 3: THÔNG TIN VỀ Khóa luận tốt nghiệp/Tiểu luận (THESIS INFORMATION)
+%----------------------------------------------------------------------------------------
+
+\author{Nhóm 2} 			
+\thesistitle{Ứng dụng mạng nơ-ron tích chập (Convolutional Neural Network) trong nhận diện khẩu trang và cảm xúc} 
+
+\supervisor {TS. Phạm Tiến Lâm} 
+\supervisorr{Thầy Đặng Văn Báu} 
+
+\field{Ngành Kỹ thuật Điện tử và Tin học} 				
+\program{Chương trình đạo tạo chuẩn} 			
+\doctype{Báo cáo kết thúc Học phần Học máy} 
+
+\university{\href{http://hus.vnu.edu.vn}{Trường Đại học Khoa học Tự nhiên}}
+\department{\href{http://hus.vnu.edu.vn/gioi-thieu/co-cau-to-chuc/khoa-truc-thuoc/khoa-vat-ly.html}{Khoa Vật lý}}
+
+\AtBeginDocument{
+	\hypersetup{pdftitle=\ttitle}
+	\hypersetup{pdfauthor=\authorname}
+}
+
+
+\begin{document}
+
+\lstset{style=codeC}	% Thiết lập ngôn ngữ C/C++ là ngôn ngữ mặc định cho phần liệt kê souce code của cả bài
+
+\frontmatter 			% Sử dụng hệ thống đánh số La Mã (i, ii, iii, iv...) cho những trang trước phần mục lục
+
+\pagestyle{plain} 
+
+
+%----------------------------------------------------------------------------------------
+%	(KHÔNG CHỈNH SỬA PHẦN NÀY)
+%
+%	PHẦN 4: TRANG TIÊU ĐỀ/TRANG BÌA (TITLE PAGE)
+%----------------------------------------------------------------------------------------
+
+% TRANG BÌA CHÍNH:
+\include{main-cover}
+
+% TRANG BÌA PHỤ:
+\include{sub-cover}
+
+%----------------------------------------------------------------------------------------
+%	PHẦN 6: LỜI CẢM ƠN (ACKNOWLEDGEMENTS)
+%----------------------------------------------------------------------------------------
+
+\begin{acknowledgements}
+	\addchaptertocentry{\acknowledgementname}
+	\thispagestyle{empty}
+	
+	Trên thực tế không có sự thành công nào mà không gắn liền với những sự giúp đỡ dù ít hay nhiều, dù trực tiếp hay gián tiếp từ những người xung quanh. Trong suốt quá trình học tập và làm việc tại giảng đường tới nay, nhóm 2 đã nhận được nhiều sự quan tâm, giúp đỡ từ các thầy cô, gia đình và bạn bè. Nhóm 2 xin gửi lời cảm ơn chân thành nhất đến \textbf{TS. Phạm Tiến Lâm} và \textbf{Thầy Đặng Văn Báu} đã tận tâm hướng dẫn nhóm qua những buổi thảo luận, thực hành về môn học. Thầy đã giúp nhóm tích lũy thêm nhiều kiến thức, kĩ năng để có cái nhìn toàn diện ,sâu sắc và tính thiết thực mà môn học mang đến.
+	
+	Kiến thức là vô hạn mà sự tiếp thu tri thức của mỗi người là khác nhau và còn tồn tại những hạn chế nhất định. Do đó, trong quá trình hoàn thành bài báo cáo này, chắc chắn không tránh khỏi những thiếu sót. Nhóm 2 rất mong nhận được những ý kiến đóng góp quý báu từ thầy để bài báo cáo của nhóm được hoàn thiện hơn.
+	
+	Nhóm 2 xin kính chúc thầy sức khỏe và thành công trên sự nghiệp giảng dạy.
+	
+	\textbf{Nhóm 2 xin chân thành cảm ơn!}
+	
+	\begin{flushright}
+		
+		Trần Duy Nghĩa - 20002146\\
+		Nguyễn Đình Quang - 20002155\\
+		Hoàng Minh Quân - 20002156\\
+		Phạm Xuân Tài - 20002161\\
+		Nguyễn Thu Hà - 20002121\\
+		
+	\end{flushright}
+\end{acknowledgements}
+
+
+%----------------------------------------------------------------------------------------
+%	(KHÔNG CHỈNH SỬA PHẦN NÀY)
+%
+%	PHẦN 7: MỤC LỤC (LIST OF CONTENTS/FIGURES/TABLES PAGES)
+%----------------------------------------------------------------------------------------
+
+\begin{spacing}{1.15}
+	\tableofcontents 	% In ra mục lục chính
+\end{spacing}
+
+\begin{spacing}{1.15}
+	\listoffigures 		% In ra danh sách hình vẽ
+\end{spacing}
+
+%\begin{spacing}{1.15}
+	%\listoftables		% In ra danh sách bảng
+%\end{spacing}
+
+
+%----------------------------------------------------------------------------------------
+%	PHẦN 8: DANH SÁCH TÊN VIẾT TẮT (ABBREVIATIONS)
+%----------------------------------------------------------------------------------------
+
+\begin{abbreviations}{ll} % Thêm danh sách tên viết tắt (dưới dạng một bảng có 2 cột)
+
+\textbf{CNN} & \textbf{C}onvolutional \textbf{N}eural \textbf{N}etwork\\
+\textbf{I/O} & \textbf{I}nput \textbf{O}utput \\
+\textbf{ROM} & \textbf{R}ead \textbf{O}nly \textbf{M}emory\\
+\textbf{RAM} & \textbf{R}andom \textbf{A}ccess \textbf{M}emory\\
+\textbf{CPU} & \textbf{C}entral \textbf{P}rocessing \textbf{U}nit\\
+
+
+\end{abbreviations}
+
+
+%----------------------------------------------------------------------------------------
+%	PHẦN 9: NỘI DUNG/CÁC CHƯƠNG Khóa luận tốt nghiệp/Tiểu luận (THESIS CONTENT - CHAPTERS)
+%----------------------------------------------------------------------------------------
+
+\mainmatter % Bắt đầu đánh số trang (1,2,3...)
+
+\pagestyle{plain}
+
+% Hãy thêm những chương (chapter) của khóa luận/tiểu luận vào thư mục Chapters
+% Hãy bỏ chú thích những dòng nếu bạn đã bổ sung những chương vào
+
+\include{Chapters/Chapter0}
+\include{Chapters/Chapter1}
+\include{Chapters/Chapter2} 
+\include{Chapters/Chapter3}
+\include{Chapters/Chapter4} 
+\include{Chapters/Chapter5} 
+
+
+
+%----------------------------------------------------------------------------------------
+%	(KHÔNG CHỈNH SỬA PHẦN NÀY)
+%
+%	PHẦN 10: TÀI LIỆU THAM KHẢO
+%----------------------------------------------------------------------------------------
+
+\begin{spacing}{1.15}
+	\printbibliography[heading=bibintoc, title=Tài liệu tham khảo] % In ra tài liệu tham khảo
+\end{spacing}
+
+%\cite{Thiện_Thắng_Thặng_Bảo_2022,Reference2,Reference3,Reference4,Bisong2019}
+
+%----------------------------------------------------------------------------------------
+%	PHẦN 11: PHỤ LỤC (THESIS CONTENT - APPENDICES)
+%----------------------------------------------------------------------------------------
+
+%\appendix % Nói với LaTeX rằng những chương về sau được tính là phụ lục
+
+% Hãy thêm những phụ lục (appendix) của khóa luận/tiểu luận vào thư mục Appendices
+% Hãy bỏ chú thích những dòng nếu bạn đã bổ sung những phụ lục vào
+
+\include{Appendices/Code}
+%\include{Appendices/AppendixB}
+%\include{Appendices/AppendixC}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}  
